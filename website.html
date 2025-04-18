@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TechZone - Latest in Tech</title>
+  <style>
+    :root {
+      --bg-color: #f4f4f4;
+      --text-color: #333;
+      --article-bg: #ffffff;
+      --tips-bg: #e3f2fd;
+      --border-color: #1976d2;
+      --nav-bg: #1565c0;
+      --header-bg: #0d47a1;
+      --btn-bg: #ffffff;
+      --btn-text: #0d47a1;
+      --footer-bg: #0d47a1;
+    }
+
+    body.dark-mode {
+      --bg-color: #121212;
+      --text-color: #e0e0e0;
+      --article-bg: #1e1e1e;
+      --tips-bg: #263238;
+      --border-color: #64b5f6;
+      --nav-bg: #0d47a1;
+      --header-bg: #102027;
+      --btn-bg: #263238;
+      --btn-text: #ffffff;
+      --footer-bg: #102027;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    header {
+      background-color: var(--header-bg);
+      color: white;
+      padding: 20px 40px;
+      text-align: center;
+      animation: slideDown 1s ease-out;
+    }
+
+    .toggle-btn {
+      margin-top: 10px;
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s, color 0.3s, transform 0.3s;
+    }
+
+    .toggle-btn:hover {
+      transform: scale(1.05);
+    }
+
+    nav {
+      background: var(--nav-bg);
+      padding: 10px;
+      text-align: center;
+      animation: fadeIn 1.2s ease-in;
+    }
+
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      display: inline-block;
+      position: relative;
+      margin: 0 10px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 12px;
+      display: inline-block;
+      transition: color 0.3s, text-shadow 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffeb3b;
+      text-shadow: 0 0 5px #ffeb3b;
+    }
+
+    nav ul li ul {
+      display: none;
+      position: absolute;
+      background-color: var(--nav-bg);
+      border-radius: 5px;
+      top: 100%;
+      left: 0;
+      min-width: 150px;
+      z-index: 999;
+    }
+
+    nav ul li:hover ul {
+      display: block;
+    }
+
+    nav ul li ul li {
+      display: block;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .article {
+      background: var(--article-bg);
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    .article:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    .article img {
+      max-width: 100%;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      animation: zoomIn 1s ease;
+    }
+
+    .tips {
+      background: var(--tips-bg);
+      padding: 15px;
+      margin-top: 30px;
+      border-left: 5px solid var(--border-color);
+      animation: fadeIn 1.5s ease-in;
+    }
+
+    .videos {
+      margin-top: 40px;
+    }
+
+    .videos h3 {
+      margin-bottom: 15px;
+      animation: fadeIn 1.5s ease-in;
+    }
+
+    .video-embed {
+      margin-bottom: 20px;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    .video-embed iframe {
+      width: 100%;
+      height: 315px;
+      border: none;
+      border-radius: 8px;
+    }
+
+    footer {
+      background: var(--footer-bg);
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+      animation: fadeIn 2s ease-in;
+    }
+
+    @media (max-width: 768px) {
+      nav ul li {
+        display: block;
+        margin: 10px 0;
+      }
+      .video-embed iframe {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>TechZone</h1>
+    <p>Your daily dose of the latest tech, tips, and tutorials</p>
+    <button class="toggle-btn" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Articles</a>
+        <ul>
+          <li><a href="#">AI</a></li>
+          <li><a href="#">Cybersecurity</a></li>
+          <li><a href="#">Gadgets</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Tips & Tricks</a>
+        <ul>
+          <li><a href="#">Windows</a></li>
+          <li><a href="#">Mac</a></li>
+          <li><a href="#">Linux</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Videos</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <div class="article">
+      <h2>AI Tools Changing the World in 2025</h2>
+      <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" alt="AI Illustration">
+      <p>Discover how new AI models are transforming industries from healthcare to education. From natural language processing to image generation, AI tools are rapidly integrating into daily life and business operations.</p>
+    </div>
+
+    <div class="article">
+      <h2>How Quantum Computing is Revolutionizing Data</h2>
+      <img src="https://images.unsplash.com/photo-1639759040438-383f6c4ff1f3" alt="Quantum Computing">
+      <p>Quantum computers are no longer science fiction. Explore what this means for encryption, research, drug discovery, and more. This technology is set to redefine computing performance standards worldwide.</p>
+    </div>
+
+    <div class="tips">
+      <h3>Quick Tech Tips</h3>
+      <ul>
+        <li>Use <code>Ctrl + Shift + T</code> to reopen a closed browser tab</li>
+        <li>Clear cache using <code>Ctrl + Shift + R</code> (hard refresh)</li>
+        <li>Press <code>Windows + V</code> to access clipboard history</li>
+      </ul>
+    </div>
+
+    <div class="videos">
+      <h3>Latest Tech Videos</h3>
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/2ePf9rue1Ao" allowfullscreen title="Tech Video 1"></iframe>
+      </div>
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/GaJtGyL3FQ0" allowfullscreen title="Tech Video 2"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 TechZone. All rights reserved.
+  </footer>
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script>
+</body>
+</html>
